@@ -12,7 +12,4 @@ def fizzbuzz():
         elif div_by_5:
             out = "Buzz"
 
-        print("{}".format(out), end="")
-
-        if num < 100:
-            print(" ", end="")
+        print("{} ".format(out), end="")
