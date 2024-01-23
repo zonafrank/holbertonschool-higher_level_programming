@@ -1,5 +1,5 @@
 #!/usr/bin/python3
 
 for num in range(100):
-    print(f"{", " if num else ""}{num:02}", end="")
+    print("{}{:02}".format(", " if num else "", num), end="")
 print()
