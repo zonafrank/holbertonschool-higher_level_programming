@@ -4,7 +4,6 @@ if __name__ == "__main__":
     import sys
 
     args = sys.argv
-    print(args)
     num_args = len(args) - 1
     pluralize = "s" if num_args != 1 else ""
     period = ":" if num_args > 0 else "."
