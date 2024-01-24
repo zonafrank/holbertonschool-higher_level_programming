@@ -7,6 +7,6 @@ if __name__ == "__main__":
     num_args = len(args) - 1
     pluralize = "s" if num_args != 1 else ""
     period = ":" if num_args > 0 else "."
-    print("{} argument{}{}".format(num_args, pluralize , period))
+    print("{} argument{}{}".format(num_args, pluralize, period))
     for i in range(1, len(args)):
         print("{}: {}".format(i, args[i]))
