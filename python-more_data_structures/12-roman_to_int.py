@@ -17,7 +17,7 @@ def roman_to_int(roman_string):
 
     if not isinstance(roman_string, str):
         return res
-    
+
     strlen = len(roman_string)
 
     for i in range(0, strlen):
