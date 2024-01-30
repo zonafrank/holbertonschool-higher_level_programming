@@ -3,8 +3,8 @@
 
 
 class Square:
+    """ initializes the instance of the class"""
     def __init__(self, size=0, position=(0, 0)):
-        """ initializes the instance of the class"""
         self.size = size
         self.position = position
 
