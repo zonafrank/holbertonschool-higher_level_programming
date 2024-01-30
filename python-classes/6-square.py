@@ -10,7 +10,8 @@ class Square:
 
         Parameters:
         - size: Size of the square (default is 0)
-        - position: Tuple representing the position of the square (default is (0, 0))
+        - position: Tuple representing the position of the square 
+        (default is (0, 0))
         """
         self.size = size
         self.position = position
@@ -52,7 +53,10 @@ class Square:
         Parameters:
         - value: New position value (tuple of 2 positive integers)
         """
-        if not isinstance(value, tuple) or len(value) != 2 or not all(isinstance(i, int) for i in value) or any(i < 0 for i in value):
+        if ((not isinstance(value, tuple))
+            or len(value) != 2
+            or not all(isinstance(i, int) for i in value) 
+            or any(i < 0 for i in value)):
             raise TypeError("position must be a tuple of 2 positive integers")
         else:
             self.__position = value
