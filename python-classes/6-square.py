@@ -10,7 +10,7 @@ class Square:
 
         Parameters:
         - size: Size of the square (default is 0)
-        - position: Tuple representing the position of the square (default is (0, 0))
+        - position: Tuple representing the position of the square
         """
         self.size = size
         self.position = position
