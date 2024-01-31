@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Task 0. Integers addition"""
+"""Task 0. Integers addition
+"""
 
 
 def add_integer(a, b=98):
