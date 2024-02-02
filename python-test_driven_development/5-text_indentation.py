@@ -20,10 +20,12 @@ def text_indentation(text):
     if not text:
         print()
 
-    for idx, char in enumerate(text):
-        if idx > 0 and char == " " and text[idx - 1] in ".?:":
-            continue
-        print(char, end="")
-        if (char in ".?:"):
-            print("")
-            print("")
+    idx = 0
+
+    while idx < len(text):
+        print(text[idx], end="")
+        if (text[idx] in ".?:"):
+            print("\n")
+            while idx + 1 < len(text) and text[idx + 1] == " ":
+                idx += 1
+        idx += 1
