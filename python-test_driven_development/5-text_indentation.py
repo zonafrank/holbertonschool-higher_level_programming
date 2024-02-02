@@ -25,4 +25,5 @@ def text_indentation(text):
             continue
         print(char, end="")
         if (char in ".?:"):
-            print("\n")
+            print("")
+            print("")
