@@ -4,6 +4,7 @@
 
 class Rectangle:
     """Rectangle class"""
+
     def __init__(self, width=0, height=0):
         """initializes an instance of class with data"""
         self.width = width
