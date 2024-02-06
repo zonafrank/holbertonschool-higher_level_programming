@@ -14,4 +14,5 @@ class LockedClass:
         if name == "first_name":
             super().__setattr__(name, value)
         else:
-            raise AttributeError(f"object has no attribute {name}")
+            raise AttributeError(
+                f"'{self.__class__.__name__}'object has no attribute {name}")
