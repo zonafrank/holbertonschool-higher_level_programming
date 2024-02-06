@@ -6,7 +6,9 @@ LockedClass will only allow the attribute `first_name` to be set on it
 
 
 class LockedClass:
-    """A class that prevents dynamic attribute creation, except for 'first_name'."""
+    """
+    A class that prevents dynamic attribute creation, except for 'first_name'.
+    """
     __slots__ = ["first_name"]
 
     def __setattr__(self, name, value):
@@ -14,5 +16,6 @@ class LockedClass:
         if name == "first_name":
             super().__setattr__(name, value)
         else:
+            classname = self.__class__.__name__
             raise AttributeError(
-                f"'{self.__class__.__name__}' object has no attribute '{name}'")
+                f"'{classname}' object has no attribute '{name}'")
