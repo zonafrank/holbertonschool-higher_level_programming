@@ -22,16 +22,17 @@ class Student:
     def to_json(self, attrs=None):
         """gets dict of square.
 
-            Args:
-                attrs (list): list of attributes
-
             Returns:
-                obj: dict with keys matching values in attrs
+                str: json version of class dict
         """
-        if not attrs:
-            return self.__dict__
-        result = {}
-        for key in self.__dict__:
-            if key in attrs:
-                result[key] = self.__dict__[key]
-        return result
+
+        dict = self.__dict__
+        filtered = {}
+        if attrs is not None:
+            for key in dict:
+                if key in attrs:
+                    filtered[key] = dict[key]
+        else:
+            filtered = dict
+
+        return filtered
