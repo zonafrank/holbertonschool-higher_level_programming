@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-a function that returns True if the object is exactly an instance of 
+a function that returns True if the object is exactly an instance of
 the specified class ; otherwise False
 """
 
@@ -13,7 +13,7 @@ def is_same_class(obj, a_class):
         a_class (object): object to check if obj is of same type
 
     Returns:
-        bool: True if the obj is exactly an instance of 
+        bool: True if the obj is exactly an instance of
         a_class ; otherwise False
     """
     return type(obj).__name__ == a_class.__name__
