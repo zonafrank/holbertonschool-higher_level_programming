@@ -1,6 +1,16 @@
 #!/usr/bin/python3
+"""Module for function to generate pascal's triangle"""
+
 
 def pascal_triangle(n):
+    """Generate a Pascal's Triangle
+
+    Args:
+        n (int): number of layers
+
+    Returns:
+        Representation of the triangle using lists
+    """
     triangle = []
     for i in range(n):
         row = []
