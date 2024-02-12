@@ -92,16 +92,21 @@ class Rectangle(Base):
         height = self.__height
         return f"[{class_name}] ({id}) {x}/{y} - {width}/{height}"
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """assigns an argument to each attribute:"""
-        for idx, val in enumerate(args):
-            if idx == 0:
-                self.id = val
-            elif idx == 1:
-                self.width = val
-            elif idx == 2:
-                self.height = val
-            elif idx == 3:
-                self.x = val
-            elif idx == 4:
-                self.y = val
+        if args:
+            for idx, val in enumerate(args):
+                if idx == 0:
+                    self.id = val
+                elif idx == 1:
+                    self.width = val
+                elif idx == 2:
+                    self.height = val
+                elif idx == 3:
+                    self.x = val
+                elif idx == 4:
+                    self.y = val
+        else:
+            if kwargs:
+                for key in kwargs:
+                    self.__setattr__(key, kwargs[key])
