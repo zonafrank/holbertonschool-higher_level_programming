@@ -81,3 +81,13 @@ class Rectangle(Base):
             for _ in range(self.width):
                 print("#", end="")
             print("")
+
+    def __str__(self):
+        """overides the __str__ method of object"""
+        class_name = type(self).__name__
+        id = self.id
+        x = self.__x
+        y = self.__y
+        width = self.__width
+        height = self.__height
+        return f"[{class_name}] ({id}) {x}/{y} - {width}/{height}"
