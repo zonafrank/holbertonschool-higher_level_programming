@@ -93,6 +93,7 @@ class Rectangle(Base):
         return f"[{class_name}] ({id}) {x}/{y} - {width}/{height}"
 
     def update(self, *args):
+        """assigns an argument to each attribute:"""
         for idx, val in enumerate(args):
             if idx == 0:
                 self.id = val
