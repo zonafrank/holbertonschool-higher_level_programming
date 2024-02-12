@@ -77,10 +77,10 @@ class Rectangle(Base):
 
     def display(self):
         """prints the Rectangle instance with the character #"""
+        for _ in range(self.__y):
+            print()
         for _ in range(self.__height):
-            for _ in range(self.width):
-                print("#", end="")
-            print("")
+            print(f'{" " * self.__x}{"#" * self.__width}')
 
     def __str__(self):
         """overides the __str__ method of object"""
