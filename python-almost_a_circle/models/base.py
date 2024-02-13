@@ -52,6 +52,15 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
+        """Convert string to json
+
+        Args:
+            json_string (str) : string representation of list of dicts
+
+        Returns:
+            list
+
+        """
         if not json_string:
             return []
         return json.loads(json_string)
@@ -89,7 +98,7 @@ class Base:
         filename = f"{cls.__name__}.json"
         try:
             with open(filename, "r", encoding="utf-8") as f:
-                list_of_dicts = json.load(f)
+                list_of_dicts = cls.from_json_string(f.read())
                 return [cls.create(**obj) for obj in list_of_dicts]
         except FileNotFoundError:
             return []
