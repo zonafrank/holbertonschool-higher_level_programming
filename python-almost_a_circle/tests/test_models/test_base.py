@@ -34,3 +34,18 @@ class TestBase(unittest.TestCase):
         """Testing to_json_string with non-empty list argument"""
         str = Base.to_json_string([{"id": 10}])
         self.assertEqual(str, "[{\"id\": 10}]")
+
+    def test_from_json_string_none(self):
+        """Testing from_json_string with None as argument"""
+        lst = Base.from_json_string(None)
+        self.assertEqual(lst, [])
+
+    def test_from_json_string_empty_list(self):
+        """Testing from_json_string with empty list string"""
+        lst = Base.from_json_string("[]")
+        self.assertEqual(lst, [])
+
+    def test_from_json_string_list_with_content(self):
+        """Testing from_json_string with list with content"""
+        lst = Base.from_json_string("[{\"id\": 10}]")
+        self.assertEqual(lst, [{"id": 10}])
