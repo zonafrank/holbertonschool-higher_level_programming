@@ -26,6 +26,11 @@ class TestBase(unittest.TestCase):
         self.assertEqual(str, "[]")
 
     def test_to_json_string_empty_list(self):
-        """Testing to_json_string with empty_string argument"""
+        """Testing to_json_string with empty_ argumlistent"""
         str = Base.to_json_string([])
         self.assertEqual(str, "[]")
+
+    def test_to_json_string_non_empty_list(self):
+        """Testing to_json_string with non-empty list argument"""
+        str = Base.to_json_string([{"id": 10}])
+        self.assertEqual(str, "[{\"id\": 10}]")
