@@ -28,4 +28,4 @@ class Base:
         """
         if not list_of_dictionaries:
             return json.dumps([])
-        return json.dumps(list_of_dictionaries)
+        return str(json.dumps(list_of_dictionaries))
