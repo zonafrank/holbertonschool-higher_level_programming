@@ -26,7 +26,6 @@ class Base:
         Returns:
             str: stringified version of list_of_dictionaries
         """
-        if list_dictionaries is None or len(list_dictionaries) == 0:
+        if not list_dictionaries:
             return "[]"
-        else:
-            return str(json.dumps(list_dictionaries))
+        return str(json.dumps(list_dictionaries))
