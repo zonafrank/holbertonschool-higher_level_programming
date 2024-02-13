@@ -120,3 +120,17 @@ class TestRectangle(unittest.TestCase):
         """
         with self.assertRaises(ValueError):
             r = Rectangle(1, 0)
+
+    def test_instantiation_with_third_arg_negative(self):
+        """Test that instatiating a Rectangle class fails
+        when third argument is negative
+        """
+        with self.assertRaises(ValueError):
+            r = Rectangle(1, 2, -3)
+
+    def test_instantiation_with_fourth_arg_negative(self):
+        """Test that instatiating a Rectangle class fails
+        when fourth argument is negative
+        """
+        with self.assertRaises(ValueError):
+            r = Rectangle(1, 2, 3, -4)
