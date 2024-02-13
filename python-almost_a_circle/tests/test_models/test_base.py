@@ -19,3 +19,8 @@ class TestBase(unittest.TestCase):
         """Tests specified id for Base instance"""
         b = Base(89)
         self.assertEqual(b.id, 89)
+
+    def test_to_json_string_none(self):
+        """Testing to_json_string with None as argument"""
+        str = Base.to_json_string(None)
+        self.assertEqual(str, "[]")
