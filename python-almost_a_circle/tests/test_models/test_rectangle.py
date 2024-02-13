@@ -78,3 +78,10 @@ class TestRectangle(unittest.TestCase):
         """
         with self.assertRaises(TypeError):
             r = Rectangle(1, "2")
+
+    def test_instantiation_with_third_arg_string(self):
+        """Test that instatiating a Rectangle class fails
+        when third argument is not an integer
+        """
+        with self.assertRaises(TypeError):
+            r = Rectangle(1, 2, "3")
