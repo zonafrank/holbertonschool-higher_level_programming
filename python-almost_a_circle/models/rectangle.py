@@ -111,19 +111,18 @@ class Rectangle(Base):
                     self.x = val
                 elif idx == 4:
                     self.y = val
-        else:
-            if kwargs:
-                for key, val in kwargs.items():
-                    if key == "id":
-                        self.id = val
-                    elif key == "x":
-                        self.x = val
-                    elif key == "y":
-                        self.y = val
-                    elif key == "width":
-                        self.width = val
-                    elif key == "height":
-                        self.height = val
+        elif len(kwargs) > 0:
+            for key, val in kwargs.items():
+                if key == "id":
+                    self.id = val
+                elif key == "x":
+                    self.x = val
+                elif key == "y":
+                    self.y = val
+                elif key == "width":
+                    self.width = val
+                elif key == "height":
+                    self.height = val
 
     def to_dictionary(self):
         """returns the dictionary representation of a Rectangle"""
