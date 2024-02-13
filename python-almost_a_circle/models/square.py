@@ -45,13 +45,15 @@ class Square(Rectangle):
                     self.y = val
         else:
             if kwargs:
-                for key in kwargs:
-                    if key == "size":
-                        self.__setattr__("width", kwargs[key])
-                        self.__setattr__("height", kwargs[key])
-                    else:
-                        if key in ["id", "x", "y"]:
-                            self.__setattr__(key, kwargs[key])
+                for key, val in kwargs.items():
+                    if key == "id":
+                        self.id = val
+                    elif key == "x":
+                        self.x = val
+                    elif key == "y":
+                        self.y = val
+                    elif key == "size":
+                        self.size = val
 
     def to_dictionary(self):
         """returns the dictionary representation of a Square"""
