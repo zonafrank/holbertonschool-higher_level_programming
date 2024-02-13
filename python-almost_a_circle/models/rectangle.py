@@ -86,10 +86,10 @@ class Rectangle(Base):
         """overides the __str__ method of object"""
         class_name = type(self).__name__
         id = self.id
-        x = self.__x
-        y = self.__y
-        width = self.__width
-        height = self.__height
+        x = self.x
+        y = self.y
+        width = self.width
+        height = self.height
         return f"[{class_name}] ({id}) {x}/{y} - {width}/{height}"
 
     def update(self, *args, **kwargs):
@@ -110,3 +110,13 @@ class Rectangle(Base):
             if kwargs:
                 for key in kwargs:
                     self.__setattr__(key, kwargs[key])
+
+    def to_dictionary(self):
+        """returns the dictionary representation of a Rectangle"""
+        return {
+            "x": self.x,
+            "y": self.y,
+            "id": self.id,
+            "width": self.width,
+            "height": self.height
+        }
