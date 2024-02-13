@@ -2,8 +2,6 @@
 """unittest for the Rectangle class"""
 
 import unittest
-from io import StringIO
-import sys
 from models.rectangle import Rectangle
 
 
