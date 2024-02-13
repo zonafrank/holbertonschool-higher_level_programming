@@ -137,5 +137,6 @@ class TestRectangle(unittest.TestCase):
 
     def test_method_area_exists(self):
         """Test that area method exists on rectangle instance"""
-        r = Rectangle(1, 2)
+        r = Rectangle(2, 3)
         self.assertTrue(hasattr(r, "area"))
+        self.assertEqual(r.area(), 6)
