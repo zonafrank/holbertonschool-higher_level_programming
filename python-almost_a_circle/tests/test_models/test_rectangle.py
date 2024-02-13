@@ -24,3 +24,28 @@ class TestRectangle(unittest.TestCase):
         r = Rectangle(1, 2)
         self.assertEqual(r.width, 1)
         self.assertEqual(r.height, 2)
+
+    def test_instatiation_with_three_args(self):
+        """
+        Creating a Rectangle instance with three arguments
+        succeeds with width set to the first argument,
+        height set to the second argument and x set to the
+        third argument
+        """
+        r = Rectangle(1, 2, 3)
+        self.assertEqual(r.width, 1)
+        self.assertEqual(r.height, 2)
+        self.assertEqual(r.x, 3)
+
+    def test_instatiation_with_three_args(self):
+        """
+        Creating a Rectangle instance with three arguments
+        succeeds with width set to the first argument,
+        height set to the second argument, x set to the
+        third argument and y set to the fourth argument
+        """
+        r = Rectangle(1, 2, 3, 4)
+        self.assertEqual(r.width, 1)
+        self.assertEqual(r.height, 2)
+        self.assertEqual(r.x, 3)
+        self.assertEqual(r.y, 4)
