@@ -58,6 +58,15 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
+        """Creates a class instance with everything already set
+
+        Args:
+            key-value pairs (dictionary)
+
+        Returns:
+            the class instance
+
+        """
         new_obj = None
         if cls.__name__ == "Rectangle":
             new_obj = cls(1, 1)
