@@ -10,6 +10,7 @@ class Square(Rectangle):
     def __init__(self, size, x=0, y=0, id=None):
         """Initialization method for instances"""
         super().__init__(size, size, x, y, id)
+        # self.size = size
 
     def __str__(self):
         """overides the __str__ method of Rectangle"""
@@ -19,3 +20,12 @@ class Square(Rectangle):
         y = self.y
         width = self.width
         return f"[{class_name}] ({id}) {x}/{y} - {width}"
+
+    @property
+    def size(self):
+        return self.width
+
+    @size.setter
+    def size(self, val):
+        self.width = val
+        self.height = val
