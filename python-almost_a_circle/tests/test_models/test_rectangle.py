@@ -2,6 +2,8 @@
 """unittest for the Rectangle class"""
 
 import unittest
+from io import StringIO
+import sys
 from models.rectangle import Rectangle
 
 
@@ -147,3 +149,12 @@ class TestRectangle(unittest.TestCase):
         """
         r = Rectangle(1, 2, 3, 4)
         self.assertEqual(r.__str__(), "[Rectangle] (2) 3/4 - 1/2")
+
+    def test_display_without_x_and_y_offsets(self):
+        """Test that the correct output is printed with no offsets"""
+        r = Rectangle(2, 3)
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        r.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(captured_output.getvalue(), "##\n##\n##\n")
