@@ -14,3 +14,8 @@ class TestBase(unittest.TestCase):
         self.assertTrue(b.id > 0)
         c = Base()
         self.assertEqual(c.id, b.id + 1)
+
+    def test_id_specified(self):
+        """Tests specified id for Base instance"""
+        b = Base(89)
+        self.assertEqual(b.id, 89)
