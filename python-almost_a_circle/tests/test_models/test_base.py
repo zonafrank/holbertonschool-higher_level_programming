@@ -24,3 +24,8 @@ class TestBase(unittest.TestCase):
         """Testing to_json_string with None as argument"""
         str = Base.to_json_string(None)
         self.assertEqual(str, "[]")
+
+    def test_to_json_string_empty_list(self):
+        """Testing to_json_string with empty_string argument"""
+        str = Base.to_json_string([])
+        self.assertEqual(str, "[]")
