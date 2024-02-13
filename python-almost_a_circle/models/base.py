@@ -106,6 +106,15 @@ class Base:
 
     @staticmethod
     def draw_square(ttl, square):
+        """draws a square instance
+
+        Args:
+            ttl (Turtle): turtle instance
+            square (Square): Square instance
+
+        Returns:
+            Nothing
+        """
         ttl.up()
         ttl.goto(square.x, square.y)
         ttl.down()
@@ -115,6 +124,15 @@ class Base:
 
     @staticmethod
     def draw_rectangle(ttl, rectangle):
+        """draws a rectangle instance
+
+        Args:
+            ttl (Turtle): turtle instance
+            rectangle (Rectangle): Rectangle instance
+
+        Returns:
+            Nothing
+        """
         ttl.up()
         ttl.goto(rectangle.x, rectangle.y)
         ttl.down()
@@ -126,6 +144,15 @@ class Base:
 
     @staticmethod
     def draw(list_rectangles, list_squares):
+        """draws rectangles and squares using turtle package
+
+        Args:
+            list_rectangle (list): list of Rectangle instances
+            list_squares (list): list of Square instances
+
+        Returns:
+            Nothing
+        """
         win = turtle.Screen()
         win.bgcolor("yellow")
         win.title("turtle")
