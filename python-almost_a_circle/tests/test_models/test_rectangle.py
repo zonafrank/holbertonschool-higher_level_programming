@@ -140,3 +140,10 @@ class TestRectangle(unittest.TestCase):
         r = Rectangle(2, 3)
         self.assertTrue(hasattr(r, "area"))
         self.assertEqual(r.area(), 6)
+
+    def test_rectangle_is_printable(self):
+        """Test that rectangle instance returns correct 
+        value when printed
+        """
+        r = Rectangle(1, 2, 3, 4)
+        self.assertEqual(r.__str__(), "[Rectangle] (2) 3/4 - 1/2")
