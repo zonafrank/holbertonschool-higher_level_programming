@@ -16,7 +16,7 @@ class Base:
             self.id = self.__nb_objects
 
     @staticmethod
-    def to_json_string(list_of_dictionaries):
+    def to_json_string(list_dictionaries):
         """
         that returns the JSON string representation of list_dictionaries
 
@@ -26,6 +26,7 @@ class Base:
         Returns:
             str: stringified version of list_of_dictionaries
         """
-        if list_of_dictionaries is None or len(list_of_dictionaries) == 0:
+        if list_dictionaries is None or len(list_dictionaries) == 0:
             return "[]"
-        return json.dumps(list_of_dictionaries)
+        else:
+            return str(json.dumps(list_dictionaries))
