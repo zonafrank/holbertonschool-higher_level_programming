@@ -39,9 +39,9 @@ class Square(Rectangle):
                 elif idx == 1:
                     self.width = val
                     self.height = val
-                elif idx == 3:
+                elif idx == 2:
                     self.x = val
-                elif idx == 4:
+                elif idx == 3:
                     self.y = val
         else:
             if kwargs:
