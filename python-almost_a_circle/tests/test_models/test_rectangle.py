@@ -2,6 +2,8 @@
 """unittest for the Rectangle class"""
 
 import unittest
+from io import StringIO
+import sys
 from models.rectangle import Rectangle
 
 
@@ -146,3 +148,14 @@ class TestRectangle(unittest.TestCase):
         """
         r = Rectangle(2, 3, 0, 0, 25)
         self.assertEqual(r.__str__(), "[Rectangle] (25) 0/0 - 2/3")
+
+    def test_display_without_x_and_y(self):
+        """Tests that display method when called without for
+        a instantiated without x and y produces correct output
+        """
+        r = Rectangle(3, 3)
+        capturedOutput = StringIO()
+        sys.stdout = capturedOutput
+        r.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(capturedOutput.getvalue(), "###\n###\n###\n")
