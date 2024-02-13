@@ -74,3 +74,22 @@ class Base:
             new_obj = cls(1)
         new_obj.update(**dictionary)
         return new_obj
+
+    @classmethod
+    def load_from_file(cls):
+        """Reads a file and creates mulitple class instances
+
+        Args:
+            nothing
+
+        Returns:
+            list of instances
+
+        """
+        filename = f"{cls.__name__}.json"
+        try:
+            with open(filename, "r", encoding="utf-8") as f:
+                list_of_dicts = json.load(f)
+                return [cls.create(**obj) for obj in list_of_dicts]
+        except FileNotFoundError:
+            return []
