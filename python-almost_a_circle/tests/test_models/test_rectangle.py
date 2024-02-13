@@ -64,3 +64,10 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.x, 3)
         self.assertEqual(r.y, 4)
         self.assertEqual(r.id, 5)
+
+    def test_instantiation_with_first_arg_string(self):
+        """Test that instatiating a Rectangle class fails
+        when the first argument is not an integer
+        """
+        with self.assertRaises(TypeError):
+            r = Rectangle("1", 2)
