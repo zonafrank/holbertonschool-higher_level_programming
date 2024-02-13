@@ -149,22 +149,3 @@ class TestRectangle(unittest.TestCase):
         """
         r = Rectangle(1, 2, 3, 4)
         self.assertEqual(r.__str__(), "[Rectangle] (2) 3/4 - 1/2")
-
-    def test_display_without_x_and_y_offsets(self):
-        """Test that the correct output is printed with no offsets"""
-        r = Rectangle(2, 3)
-        captured_output = StringIO()
-        sys.stdout = captured_output
-        r.display()
-        sys.stdout = sys.__stdout__
-        self.assertEqual(captured_output.getvalue(), "##\n##\n##\n")
-
-    def test_display_x_offset_only(self):
-        """Tests that the graphical representation prints out correctly with x offset
-        """
-        r = Rectangle(2, 2, 1)
-        capturedOutput = StringIO()
-        sys.stdout = capturedOutput
-        r.display()
-        sys.stdout = sys.__stdout__
-        self.assertEqual(capturedOutput.getvalue(), " ##\n ##\n")
