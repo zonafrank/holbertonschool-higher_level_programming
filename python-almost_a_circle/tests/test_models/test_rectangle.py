@@ -92,3 +92,31 @@ class TestRectangle(unittest.TestCase):
         """
         with self.assertRaises(TypeError):
             r = Rectangle(1, 2, 3, "4")
+
+    def test_instantiation_with_first_arg_negative(self):
+        """Test that instatiating a Rectangle class fails
+        when first argument is negative
+        """
+        with self.assertRaises(ValueError):
+            r = Rectangle(-1, 2)
+
+    def test_instantiation_with_second_arg_negative(self):
+        """Test that instatiating a Rectangle class fails
+        when second argument is negative
+        """
+        with self.assertRaises(ValueError):
+            r = Rectangle(1, -2)
+
+    def test_instantiation_with_first_arg_zero(self):
+        """Test that instatiating a Rectangle class fails
+        when first argument is zero
+        """
+        with self.assertRaises(ValueError):
+            r = Rectangle(0, 2)
+
+    def test_instantiation_with_second_arg_zero(self):
+        """Test that instatiating a Rectangle class fails
+        when second argument is zero
+        """
+        with self.assertRaises(ValueError):
+            r = Rectangle(1, 0)
