@@ -159,3 +159,13 @@ class TestRectangle(unittest.TestCase):
         r.display()
         sys.stdout = sys.__stdout__
         self.assertEqual(capturedOutput.getvalue(), "###\n###\n###\n")
+
+    def test_display_x_offset_only(self):
+        """Tests that the graphical representation prints out correctly with x offset
+        """
+        r = Rectangle(2, 2, 1)
+        capturedOutput = StringIO()     # Create StringIO object
+        sys.stdout = capturedOutput     # and redirect stdout.
+        r.display()                     # Call unchanged function.
+        sys.stdout = sys.__stdout__     # Reset redirect.
+        self.assertEqual(capturedOutput.getvalue(), " ##\n ##\n")
