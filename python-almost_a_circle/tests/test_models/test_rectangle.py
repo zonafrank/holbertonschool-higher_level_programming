@@ -140,3 +140,9 @@ class TestRectangle(unittest.TestCase):
         r = Rectangle(2, 3)
         self.assertTrue(hasattr(r, "area"))
         self.assertEqual(r.area(), 6)
+
+    def test_printable(self):
+        """Tests that the instance can be stringified
+        """
+        r = Rectangle(2, 5, 0, 0, 25)
+        self.assertEqual(r.__str__(), "[Rectangle] (25) 0/0 - 2/5")
