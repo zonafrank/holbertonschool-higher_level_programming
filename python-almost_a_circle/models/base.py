@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """module for Base class"""
 import json
+import turtle
 
 
 class Base:
@@ -102,3 +103,36 @@ class Base:
                 return [cls.create(**obj) for obj in list_of_dicts]
         except FileNotFoundError:
             return []
+
+    @staticmethod
+    def draw_square(ttl, square):
+        ttl.up()
+        ttl.goto(square.x, square.y)
+        ttl.down()
+        for _ in range(4):
+            ttl.forward(square.size)
+            ttl.left(90)
+
+    @staticmethod
+    def draw_rectangle(ttl, rectangle):
+        ttl.up()
+        ttl.goto(rectangle.x, rectangle.y)
+        ttl.down()
+        for _ in range(2):
+            ttl.forward(rectangle.width)
+            ttl.left(90)
+            ttl.forward(rectangle.height)
+            ttl.left(90)
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        win = turtle.Screen()
+        win.bgcolor("yellow")
+        win.title("turtle")
+        ttl = turtle.Turtle()
+
+        for rect in list_rectangles:
+            Base.draw_rectangle(ttl, rect)
+
+        for square in list_squares:
+            Base.draw_square(ttl, square)
