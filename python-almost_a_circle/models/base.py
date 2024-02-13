@@ -55,3 +55,13 @@ class Base:
         if not json_string:
             return []
         return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        new_obj = None
+        if cls.__name__ == "Rectangle":
+            new_obj = cls(1, 1)
+        elif cls.__name__ == "Square":
+            new_obj = cls(1)
+        new_obj.update(**dictionary)
+        return new_obj
