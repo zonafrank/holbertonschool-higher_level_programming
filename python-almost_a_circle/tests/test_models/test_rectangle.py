@@ -37,9 +37,9 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.height, 2)
         self.assertEqual(r.x, 3)
 
-    def test_instatiation_with_three_args(self):
+    def test_instatiation_with_four_args(self):
         """
-        Creating a Rectangle instance with three arguments
+        Creating a Rectangle instance with four arguments
         succeeds with width set to the first argument,
         height set to the second argument, x set to the
         third argument and y set to the fourth argument
@@ -49,3 +49,18 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.height, 2)
         self.assertEqual(r.x, 3)
         self.assertEqual(r.y, 4)
+
+    def test_instatiation_with_five_args(self):
+        """
+        Creating a Rectangle instance with five arguments
+        succeeds with width set to the first argument,
+        height set to the second argument, x set to the
+        third argument, y to the fourth argument and id
+        set to the fifth argument
+        """
+        r = Rectangle(1, 2, 3, 4, 5)
+        self.assertEqual(r.width, 1)
+        self.assertEqual(r.height, 2)
+        self.assertEqual(r.x, 3)
+        self.assertEqual(r.y, 4)
+        self.assertEqual(r.id, 5)
