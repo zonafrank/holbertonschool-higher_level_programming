@@ -212,46 +212,44 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.x, 3)
         self.assertEqual(r.y, 3)
 
-    def test_parent_save_to_file_none(self):
-        """Tests that save_to_file method can be called from 
-        Rectangle instance
+        def test_parent_save_to_file_none(self):
+        """Tests empty input with parent Base class' save_to_file method
         """
         Rectangle.save_to_file(None)
         filename = "Rectangle.json"
+
         data = ""
-        with open(filename, "r") as f:
+        with open(filename, "r", encoding="utf-8") as f:
             for line in f:
                 data += line
 
         self.assertEqual(data, "[]")
 
     def test_parent_save_to_file_empty_list(self):
-        """Tests that save_to_file method when called with
-        empty list as arg returns the expected value
+        """Tests empty list input with parent Base class' save_to_file method
         """
         Rectangle.save_to_file([])
         filename = "Rectangle.json"
+
         data = ""
-        with open(filename, "r") as f:
+        with open(filename, "r", encoding="utf-8") as f:
             for line in f:
                 data += line
 
         self.assertEqual(data, "[]")
 
-    def test_parent_save_to_file_empty_rectangle(self):
-        """Tests that save_to_file method when called with
-        list of Rectangles as arg returns the expected value
+    def test_parent_save_to_file_list_rectangle(self):
+        """Tests list with Rectangle instantiator as input with parent Base class' save_to_file method
         """
-        Rectangle.save_to_file([Rectangle(3, 3, 2, 2, 35)])
+        Rectangle.save_to_file([Rectangle(3,3,5,5,25)])
         filename = "Rectangle.json"
+
         data = ""
-        with open(filename, "r") as f:
+        with open(filename, "r", encoding="utf-8") as f:
             for line in f:
                 data += line
 
-        self.assertEqual(
-            data, '[{"x": 2, "y": 2, "id": 35, "height": 3, "width": 3}]')
-
+        self.assertEqual(data, "[{\"x\": 5, \"y\": 5, \"id\": 25, \"height\": 3, \"width\": 3}]")
     def test_rectangle_load_from_nonexistent_file(self):
         """Tests that load_from_file class method works
         as expected when file does not exist
