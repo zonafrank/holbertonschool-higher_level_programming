@@ -169,3 +169,11 @@ class TestRectangle(unittest.TestCase):
         r.display()                     # Call unchanged function.
         sys.stdout = sys.__stdout__     # Reset redirect.
         self.assertEqual(capturedOutput.getvalue(), " ##\n ##\n")
+
+    def test_to_dictionary_method(self):
+        """Tests that when called, to_dictionary method
+        returns the correct value"""
+        r = Rectangle(2, 3, 0, 0, 35)
+        d = r.to_dictionary()
+        self.assertEqual(
+            d, {'x': 0, 'y': 0, 'id': 35, 'height': 3, 'width': 2})
