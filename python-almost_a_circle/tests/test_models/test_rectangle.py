@@ -200,3 +200,14 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.height, 4)
         self.assertEqual(r.x, 2)
         self.assertEqual(r.y, 2)
+
+    def test_parent_create_method(self):
+        """Test that the parent create method works
+        as expected when called from the child class
+        """
+        r = Rectangle.create(id=123, width=3, height=4, x=3, y=3)
+        self.assertEqual(r.id, 123)
+        self.assertEqual(r.width, 3)
+        self.assertEqual(r.height, 4)
+        self.assertEqual(r.x, 3)
+        self.assertEqual(r.y, 3)
