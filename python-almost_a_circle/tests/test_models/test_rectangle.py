@@ -4,6 +4,7 @@
 import unittest
 from io import StringIO
 import sys
+import os
 from models.rectangle import Rectangle
 
 
@@ -211,6 +212,35 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.height, 4)
         self.assertEqual(r.x, 3)
         self.assertEqual(r.y, 3)
+
+    def test_rectangle_save_to_file(self):
+        filename = "Rectangle.json"
+        if (os.path.isfile(filename)):
+            os.remove(filename)
+
+        Rectangle.save_to_file(None)
+        content = ""
+        with open(filename, "r", encoding="utf-8") as f:
+            content = f.read()
+        os.remove(filename)
+        self.assertEqual(content, "[]")
+
+        Rectangle.save_to_file([])
+        content = ""
+        with open(filename, "r", encoding="utf-8") as f:
+            content = f.read()
+        os.remove(filename)
+        self.assertEqual(content, "[]")
+
+        Rectangle.save_to_file([Rectangle(1, 2, 0, 0, 99)])
+        content = ""
+        with open(filename, "r", encoding="utf-8") as f:
+            content = f.read()
+        os.remove(filename)
+        self.assertEqual(
+            content,
+            '[{"x": 0, "y": 0, "id": 99, "height": 2, "width": 1}]'
+        )
 
     def test_rectangle_load_from_nonexistent_file(self):
         """Tests that load_from_file class method works
