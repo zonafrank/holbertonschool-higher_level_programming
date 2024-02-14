@@ -4,6 +4,7 @@
 import unittest
 from io import StringIO
 import sys
+import os
 from models.square import Square
 
 
@@ -182,59 +183,34 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(r.x, 3)
         self.assertEqual(r.y, 3)
 
-    def test_parent_save_to_file_none(self):
-        """Tests that save_to_file method can be called from 
-        Square instance
-        """
+    def test_square_save_to_file(self):
+        filename = "Square.json"
+        if (os.path.isfile(filename)):
+            os.remove(filename)
+
         Square.save_to_file(None)
-        filename = "Square.json"
-        data = ""
-        with open(filename, "r") as f:
-            for line in f:
-                data += line
+        content = ""
+        with open(filename, "r", encoding="utf-8") as f:
+            content = f.read()
+        os.remove(filename)
+        self.assertEqual(content, "[]")
 
-        self.assertEqual(data, "[]")
-
-    def test_parent_save_to_file_empty_list(self):
-        """Tests that save_to_file method when called with
-        empty list as arg returns the expected value
-        """
         Square.save_to_file([])
-        filename = "Square.json"
-        data = ""
-        with open(filename, "r") as f:
-            for line in f:
-                data += line
+        content = ""
+        with open(filename, "r", encoding="utf-8") as f:
+            content = f.read()
+        os.remove(filename)
+        self.assertEqual(content, "[]")
 
-        self.assertEqual(data, "[]")
-
-    def test_parent_save_to_file_Square(self):
-        """Tests that save_to_file method when called with
-        list of Squares as arg returns the expected value
-        """
-        Square.save_to_file([Square(1)])
-        filename = "Square.json"
-        data = ""
-        with open(filename, "r") as f:
-            for line in f:
-                data += line
-
+        Square.save_to_file([Square(2, 0, 0, 99)])
+        content = ""
+        with open(filename, "r", encoding="utf-8") as f:
+            content = f.read()
+        os.remove(filename)
         self.assertEqual(
-            data, '[{"id": 1, "x": 0, "size": 1, "y": 0}]')
-
-    def test_parent_save_to_file_Square(self):
-        """Tests that save_to_file method when called with
-        list of Squares as arg returns the expected value
-        """
-        Square.save_to_file([Square(3, 2, 2, 35)])
-        filename = "Square.json"
-        data = ""
-        with open(filename, "r") as f:
-            for line in f:
-                data += line
-
-        self.assertEqual(
-            data, '[{"id": 35, "x": 2, "size": 3, "y": 2}]')
+            content,
+            '[{"id": 99, "x": 0, "size": 2, "y": 0}]'
+        )
 
     def test_Square_load_from_nonexistent_file(self):
         """Tests that load_from_file class method works
