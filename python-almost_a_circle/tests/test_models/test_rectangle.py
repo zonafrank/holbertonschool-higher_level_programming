@@ -226,7 +226,8 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(data, "[]")
 
     def test_parent_save_to_file_empty_list(self):
-        """Tests empty list input with parent Base class' save_to_file method
+        """Tests empty list input with parent Base class'
+        save_to_file method
         """
         Rectangle.save_to_file([])
         filename = "Rectangle.json"
@@ -239,7 +240,8 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(data, "[]")
 
     def test_parent_save_to_file_list_rectangle(self):
-        """Tests list with Rectangle instantiator as input with parent Base class' save_to_file method
+        """Tests list with Rectangle instantiator as input
+        with parent Base class' save_to_file method
         """
         Rectangle.save_to_file([Rectangle(3,3,5,5,25)])
         filename = "Rectangle.json"
@@ -249,7 +251,11 @@ class TestRectangle(unittest.TestCase):
             for line in f:
                 data += line
 
-        self.assertEqual(data, "[{\"x\": 5, \"y\": 5, \"id\": 25, \"height\": 3, \"width\": 3}]")
+        self.assertEqual(
+            data, 
+            '[{"x": 5, "y": 5, "id": 25, "height": 3, "width": 3}]'
+            )
+
     def test_rectangle_load_from_nonexistent_file(self):
         """Tests that load_from_file class method works
         as expected when file does not exist
