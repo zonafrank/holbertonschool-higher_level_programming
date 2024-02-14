@@ -212,8 +212,8 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.x, 3)
         self.assertEqual(r.y, 3)
 
-    def test_save_to_file_class_method_none_arg(self):
-        """Tests that save_to_file method can be calles from 
+    def test_parent_save_to_file_none(self):
+        """Tests that save_to_file method can be called from 
         Rectangle instance
         """
         Rectangle.save_to_file(None)
@@ -224,3 +224,30 @@ class TestRectangle(unittest.TestCase):
                 data += line
 
         self.assertEqual(data, "[]")
+
+    def test_parent_save_to_file_empty_list(self):
+        """Tests that save_to_file method when called with
+        empty list as arg returns the expected value
+        """
+        Rectangle.save_to_file([])
+        filename = "Rectangle.json"
+        data = ""
+        with open(filename, "r") as f:
+            for line in f:
+                data += line
+
+        self.assertEqual(data, "[]")
+
+    def test_parent_save_to_file_empty_rectangle(self):
+        """Tests that save_to_file method when called with
+        list of Rectangles as arg returns the expected value
+        """
+        Rectangle.save_to_file([Rectangle(3, 3, 2, 2, 35)])
+        filename = "Rectangle.json"
+        data = ""
+        with open(filename, "r") as f:
+            for line in f:
+                data += line
+
+        self.assertEqual(
+            data, '[{"x": 2, "y": 2, "id": 35, "height": 3, "width": 3}]')
