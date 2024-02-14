@@ -195,19 +195,6 @@ class TestSquare(unittest.TestCase):
 
         self.assertEqual(data, "[]")
 
-    def test_parent_save_to_file_none(self):
-        """Tests that save_to_file method can be called from 
-        Square instance
-        """
-        Square.save_to_file(None)
-        filename = "Square.json"
-        data = ""
-        with open(filename, "r") as f:
-            for line in f:
-                data += line
-
-        self.assertEqual(data, "[]")
-
     def test_parent_save_to_file_empty_list(self):
         """Tests that save_to_file method when called with
         empty list as arg returns the expected value
@@ -221,18 +208,19 @@ class TestSquare(unittest.TestCase):
 
         self.assertEqual(data, "[]")
 
-    def test_parent_save_to_file_empty_list(self):
+    def test_parent_save_to_file_Square(self):
         """Tests that save_to_file method when called with
-        empty list as arg returns the expected value
+        list of Squares as arg returns the expected value
         """
-        Square.save_to_file([])
+        Square.save_to_file([Square(1)])
         filename = "Square.json"
         data = ""
         with open(filename, "r") as f:
             for line in f:
                 data += line
 
-        self.assertEqual(data, "[]")
+        self.assertEqual(
+            data, '[{"id": 1, "x": 0, "size": 1, "y": 0}]')
 
     def test_parent_save_to_file_Square(self):
         """Tests that save_to_file method when called with
