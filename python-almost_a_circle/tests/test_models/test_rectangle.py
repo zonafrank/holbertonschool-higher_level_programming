@@ -251,3 +251,22 @@ class TestRectangle(unittest.TestCase):
 
         self.assertEqual(
             data, '[{"x": 2, "y": 2, "id": 35, "height": 3, "width": 3}]')
+
+    def test_rectangle_load_from_nonexistent_file(self):
+        """Tests that load_from_file class method works
+        as expected when file does not exist
+        """
+        lst = Rectangle.load_from_file()
+        self.assertEqual(lst, [])
+
+    def test_rectangle_load_from_existing_file(self):
+        """Tests that load_from_file works when works
+        as expected when called with None as argument
+        """
+        Rectangle.save_to_file(None)
+        lst = Rectangle.load_from_file()
+        self.assertEqual(lst, [])
+
+
+if __name__ == "__main__":
+    unittest.main()
