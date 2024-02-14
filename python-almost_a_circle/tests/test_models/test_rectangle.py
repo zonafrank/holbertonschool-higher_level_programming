@@ -177,3 +177,26 @@ class TestRectangle(unittest.TestCase):
         d = r.to_dictionary()
         self.assertEqual(
             d, {'x': 0, 'y': 0, 'id': 35, 'height': 3, 'width': 2})
+
+    def test_update_method_with_args(self):
+        """Tests that the update method works with args
+        """
+        r = Rectangle(4, 5, 2, 3)
+        r.update(81, 3, 4, 2, 3)
+        self.assertEqual(r.id, 81)
+        self.assertEqual(r.width, 3)
+        self.assertEqual(r.height, 4)
+        self.assertEqual(r.x, 2)
+        self.assertEqual(r.y, 3)
+
+    def test_update_method_with_kwargs(self):
+        """Test that the update method when called with
+        kwargs works as expected
+        """
+        r = Rectangle(2, 3, 1, 1, 55)
+        r.update(id=56, width=3, height=4, x=2, y=2)
+        self.assertEqual(r.id, 56)
+        self.assertEqual(r.width, 3)
+        self.assertEqual(r.height, 4)
+        self.assertEqual(r.x, 2)
+        self.assertEqual(r.y, 2)
