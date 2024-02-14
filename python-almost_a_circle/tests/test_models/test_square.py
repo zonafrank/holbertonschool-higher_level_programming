@@ -1,178 +1,256 @@
 #!/usr/bin/python3
-"""Unittests for Square Class
-"""
+"""unittest for the Square class"""
+
 import unittest
+from io import StringIO
+import sys
 from models.square import Square
 
 
 class TestSquare(unittest.TestCase):
+    """Test functions for the Square class"""
 
-    def test_no_args(self):
-        """Tests initialising Square with no args
+    def test_instantiaton_without_args(self):
+        """
+        Creating a Square instance with no arguments
+        fails with a TypeError exception
         """
         self.assertRaises(TypeError, Square)
 
-    def test_init_with_size(self):
-        """Tests initialising Square with size
+    def test_instatiation_with_two_args(self):
         """
-        s = Square(3)
-        self.assertEqual(s.size, 3)
+        Creating a Square instance with two arguments
+        succeeds with width set to the first argument
+        and height set to the second argument
+        """
+        r = Square(1)
+        self.assertEqual(r.width, 1)
+        self.assertEqual(r.height, 1)
 
-    def test_init_with_size_and_x(self):
-        """Tests initialising Square with size and x
+    def test_instatiation_with_three_args(self):
         """
-        s = Square(3, 5)
-        self.assertEqual(s.x, 5)
+        Creating a Square instance with three arguments
+        succeeds with width set to the first argument,
+        height set to the second argument and x set to the
+        third argument
+        """
+        r = Square(1, 2, 3)
+        self.assertEqual(r.width, 1)
+        self.assertEqual(r.height, 1)
+        self.assertEqual(r.x, 2)
+        self.assertEqual(r.y, 3)
 
-    def test_init_with_size_x_and_y(self):
-        """Tests initialising Square with size, x and y
+    def test_instatiation_with_four_args(self):
         """
-        s = Square(3, 5, 10)
-        self.assertEqual(s.y, 10)
+        Creating a Square instance with four arguments
+        succeeds with width set to the first argument,
+        height set to the second argument, x set to the
+        third argument and y set to the fourth argument
+        """
+        r = Square(1, 2, 3, 45)
+        self.assertEqual(r.width, 1)
+        self.assertEqual(r.height, 1)
+        self.assertEqual(r.x, 2)
+        self.assertEqual(r.y, 3)
+        self.assertEqual(r.id, 45)
 
-    def test_init_with_all_args(self):
-        """Tests initialising Square with all args
+    def test_instantiation_with_first_arg_string(self):
+        """Test that instatiating a Square class fails
+        when the first argument is not an integer
         """
-        s = Square(3, 5, 10, 25)
-        self.assertEqual(s.id, 25)
+        with self.assertRaises(TypeError):
+            r = Square("1")
 
-    def test_init_with_size_string(self):
-        """Tests initialising Square with string size
+    def test_instantiation_with_second_arg_string(self):
+        """Test that instatiating a Square class fails
+        when second argument is not an integer
         """
-        self.assertRaises(TypeError, Square, "10")
+        with self.assertRaises(TypeError):
+            r = Square(1, "2")
 
-    def test_init_with_x_string(self):
-        """Tests initialising Square with string x offset
+    def test_instantiation_with_third_arg_string(self):
+        """Test that instatiating a Square class fails
+        when third argument is not an integer
         """
-        self.assertRaises(TypeError, Square, 5, "10")
+        with self.assertRaises(TypeError):
+            r = Square(1, 2, "3")
 
-    def test_init_with_y_string(self):
-        """Tests initialising Square with string y offset
+    def test_instantiation_with_first_arg_negative(self):
+        """Test that instatiating a Square class fails
+        when first argument is negative
         """
-        self.assertRaises(TypeError, Square, 5, 10, "10")
+        with self.assertRaises(ValueError):
+            r = Square(-1)
 
-    def test_init_with_negative_size(self):
-        """Tests initialising Square with negative size
+    def test_instantiation_with_second_arg_negative(self):
+        """Test that instatiating a Square class fails
+        when second argument is negative
         """
-        self.assertRaises(ValueError, Square, -1)
+        with self.assertRaises(ValueError):
+            r = Square(1, -2)
 
-    def test_init_with_negative_x(self):
-        """Tests initialising Square with negative x
+    def test_instantiation_with_first_arg_zero(self):
+        """Test that instatiating a Square class fails
+        when first argument is zero
         """
-        self.assertRaises(ValueError, Square, 5, -1)
+        with self.assertRaises(ValueError):
+            r = Square(0)
 
-    def test_init_with_negative_y(self):
-        """Tests initialising Square with negative y
+    def test_instantiation_with_second_arg_negative(self):
+        """Test that instatiating a Square class fails
+        when third argument is negative
         """
-        self.assertRaises(ValueError, Square, 5, 1, -1)
+        with self.assertRaises(ValueError):
+            r = Square(1, -2)
 
-    def test_init_with_zero_size(self):
-        """Tests initialising Square with zero size
+    def test_instantiation_with_third_arg_negative(self):
+        """Test that instatiating a Square class fails
+        when fourth argument is negative
         """
-        self.assertRaises(ValueError, Square, 0)
+        with self.assertRaises(ValueError):
+            r = Square(1, 2, -3)
+
+    def test_method_area_exists(self):
+        """Test that area method exists on Square instance"""
+        r = Square(2)
+        self.assertTrue(hasattr(r, "area"))
+        self.assertEqual(r.area(), 4)
 
     def test_printable(self):
         """Tests that the instance can be stringified
         """
-        s = Square(2, 0, 0, 25)
-        self.assertEqual(s.__str__(), "[Square] (25) 0/0 - 2")
+        r = Square(2, 0, 0, 25)
+        self.assertEqual(r.__str__(), "[Square] (25) 0/0 - 2")
+
+    def test_display_without_x_and_y(self):
+        """Tests that display method when called without for
+        a instantiated without x and y produces correct output
+        """
+        r = Square(3)
+        capturedOutput = StringIO()
+        sys.stdout = capturedOutput
+        r.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(capturedOutput.getvalue(), "###\n###\n###\n")
+
+    def test_display_x_offset_only(self):
+        """Tests that the graphical representation prints out correctly with x offset
+        """
+        r = Square(2, 1)
+        capturedOutput = StringIO()     # Create StringIO object
+        sys.stdout = capturedOutput     # and redirect stdout.
+        r.display()                     # Call unchanged function.
+        sys.stdout = sys.__stdout__     # Reset redirect.
+        self.assertEqual(capturedOutput.getvalue(), " ##\n ##\n")
 
     def test_to_dictionary_method(self):
-        """Tests that the dictionary representation is correct
-        """
-        s = Square(2, 0, 0, 30)
-        d = s.to_dictionary()
-        self.assertEqual(d, {'x': 0, 'y': 0, 'id': 30, 'size': 2})
-
-    def test_update_method_no_args(self):
-        """Tests the update method with no args
-        """
-        s = Square(2, 1, 1, 12)
-        s.update()
-        self.assertEqual(s.id, 12)
+        """Tests that when called, to_dictionary method
+        returns the correct value"""
+        r = Square(2, 0, 0, 35)
+        d = r.to_dictionary()
+        self.assertEqual(
+            d, {'x': 0, 'y': 0, 'id': 35, 'size': 2})
 
     def test_update_method_with_args(self):
-        """Tests the update method with no args
+        """Tests that the update method works with args
         """
-        s = Square(2, 1, 1, 12)
-        s.update(25, 10, 3, 3)
-        self.assertEqual(s.id, 25)
-        self.assertEqual(s.size, 10)
-        self.assertEqual(s.x, 3)
-        self.assertEqual(s.y, 3)
+        r = Square(4, 2, 3)
+        r.update(81, 3, 2, 3)
+        self.assertEqual(r.id, 81)
+        self.assertEqual(r.size, 3)
+        self.assertEqual(r.x, 2)
+        self.assertEqual(r.y, 3)
 
-    def test_update_method_kwargs(self):
-        """Tests that the update method works with kwargs
+    def test_update_method_with_kwargs(self):
+        """Test that the update method when called with
+        kwargs works as expected
         """
-        s = Square(2, 1, 1, 123)
-        s.update(**{'id': 321, 'size': 5, 'x': 10, 'y': 10})
-        self.assertEqual(s.id, 321)
-        self.assertEqual(s.size, 5)
-        self.assertEqual(s.x, 10)
-        self.assertEqual(s.y, 10)
+        r = Square(2, 1, 1, 55)
+        r.update(id=56, size=3, x=2, y=2)
+        self.assertEqual(r.id, 56)
+        self.assertEqual(r.size, 3)
+        self.assertEqual(r.x, 2)
+        self.assertEqual(r.y, 2)
 
-    def test_parent_create_method_kwargs(self):
-        """Tests that the parent Base class' create method works with kwargs
+    def test_parent_create_method(self):
+        """Test that the parent create method works
+        as expected when called from the child class
         """
-        s = Square.create(**{'id': 123, 'size': 5, 'x': 2, 'y': 2})
-        self.assertEqual(s.id, 123)
-        self.assertEqual(s.size, 5)
-        self.assertEqual(s.x, 2)
-        self.assertEqual(s.y, 2)
+        r = Square.create(id=123, size=3, x=3, y=3)
+        self.assertEqual(r.id, 123)
+        self.assertEqual(r.size, 3)
+        self.assertEqual(r.x, 3)
+        self.assertEqual(r.y, 3)
 
     def test_parent_save_to_file_none(self):
-        """Tests empty input with parent Base class' save_to_file method
+        """Tests that save_to_file method can be called from 
+        Square instance
         """
         Square.save_to_file(None)
         filename = "Square.json"
-
         data = ""
-        with open(filename, "r", encoding="utf-8") as f:
+        with open(filename, "r") as f:
             for line in f:
                 data += line
 
         self.assertEqual(data, "[]")
 
     def test_parent_save_to_file_empty_list(self):
-        """Tests empty list input with parent Base class' save_to_file method
+        """Tests that save_to_file method when called with
+        empty list as arg returns the expected value
         """
         Square.save_to_file([])
         filename = "Square.json"
-
         data = ""
-        with open(filename, "r", encoding="utf-8") as f:
+        with open(filename, "r") as f:
             for line in f:
                 data += line
 
         self.assertEqual(data, "[]")
 
-    def test_parent_save_to_file_list_square(self):
-        """Tests list with Square instantiator as input with parent Base class' save_to_file method
+    def test_parent_save_to_file_Square(self):
+        """Tests that save_to_file method when called with
+        list of Squares as arg returns the expected value
         """
-        Square.save_to_file([Square(3, 5, 5, 25)])
+        Square.save_to_file([Square(1)])
         filename = "Square.json"
-
         data = ""
-        with open(filename, "r", encoding="utf-8") as f:
+        with open(filename, "r") as f:
             for line in f:
                 data += line
 
         self.assertEqual(
-            data, "[{\"id\": 25, \"x\": 5, \"size\": 3, \"y\": 5}]")
+            data, '[{"id": 1, "x": 0, "size": 1, "y": 0}]')
 
-    def test_parent_load_from_non_existant_file(self):
-        """Tests loading from a non-existant file with parent Base class' load_from_file method
+    def test_parent_save_to_file_Square(self):
+        """Tests that save_to_file method when called with
+        list of Squares as arg returns the expected value
         """
-        l = Square.load_from_file()
-        self.assertEqual(l, [])
+        Square.save_to_file([Square(3, 2, 2, 35)])
+        filename = "Square.json"
+        data = ""
+        with open(filename, "r") as f:
+            for line in f:
+                data += line
 
-    def test_parent_load_from_non_existing_file(self):
-        """Tests loading from an existing file with parent Base class' load_from_file method
+        self.assertEqual(
+            data, '[{"id": 35, "x": 2, "size": 3, "y": 2}]')
+
+    def test_Square_load_from_nonexistent_file(self):
+        """Tests that load_from_file class method works
+        as expected when file does not exist
+        """
+        lst = Square.load_from_file()
+        self.assertEqual(lst, [])
+
+    def test_Square_load_from_existing_file(self):
+        """Tests that load_from_file works when works
+        as expected when called with None as argument
         """
         Square.save_to_file(None)
-        l = Square.load_from_file()
-        self.assertEqual(str(l), "[]")
+        lst = Square.load_from_file()
+        self.assertEqual(lst, [])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
