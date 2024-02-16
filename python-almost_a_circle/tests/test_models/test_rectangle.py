@@ -11,14 +11,13 @@ from models.rectangle import Rectangle
 class TestRectangle(unittest.TestCase):
     """Test functions for the Rectangle class"""
 
-    def test_instantiaton_without_args(self):
+    def test_instantiaton(self):
         """
         Creating a Rectangle instance with no arguments
         fails with a TypeError exception
         """
         self.assertRaises(TypeError, Rectangle)
 
-    def test_instatiation_with_two_args(self):
         """
         Creating a Rectangle instance with two arguments
         succeeds with width set to the first argument
@@ -28,7 +27,6 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.width, 1)
         self.assertEqual(r.height, 2)
 
-    def test_instatiation_with_three_args(self):
         """
         Creating a Rectangle instance with three arguments
         succeeds with width set to the first argument,
@@ -40,7 +38,6 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.height, 2)
         self.assertEqual(r.x, 3)
 
-    def test_instatiation_with_four_args(self):
         """
         Creating a Rectangle instance with four arguments
         succeeds with width set to the first argument,
@@ -53,7 +50,6 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.x, 3)
         self.assertEqual(r.y, 4)
 
-    def test_instatiation_with_five_args(self):
         """
         Creating a Rectangle instance with five arguments
         succeeds with width set to the first argument,
@@ -165,10 +161,10 @@ class TestRectangle(unittest.TestCase):
         """Tests that the graphical representation prints out correctly with x offset
         """
         r = Rectangle(2, 2, 1)
-        capturedOutput = StringIO()     # Create StringIO object
-        sys.stdout = capturedOutput     # and redirect stdout.
-        r.display()                     # Call unchanged function.
-        sys.stdout = sys.__stdout__     # Reset redirect.
+        capturedOutput = StringIO()
+        sys.stdout = capturedOutput
+        r.display()
+        sys.stdout = sys.__stdout__
         self.assertEqual(capturedOutput.getvalue(), " ##\n ##\n")
 
     def test_to_dictionary_method(self):
