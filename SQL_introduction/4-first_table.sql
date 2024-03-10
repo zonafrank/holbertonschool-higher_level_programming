@@ -1,5 +1,5 @@
 -- script that creates a table called first_table in the current database
-CREATE TABLE first_table NOT EXISTS (
+CREATE TABLE IF NOT EXISTS first_table (
   id INT,
   name VARCHAR2(256)
 )
