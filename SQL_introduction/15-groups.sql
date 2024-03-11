@@ -5,4 +5,5 @@
 -- is sorted by the number of records (descending)
 SELECT score, count(*) AS number
 FROM second_table
-GROUP BY score;
+GROUP BY score
+ORDER BY number DESC;
