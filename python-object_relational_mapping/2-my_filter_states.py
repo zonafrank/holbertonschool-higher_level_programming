@@ -24,8 +24,7 @@ if __name__ == "__main__":
     cur.execute(
         """SELECT * FROM states
         WHERE name = %s
-        ORDER BY id""",
-        (state_name,)
+        ORDER BY id""".format(state_name,)
     )
 
     for row in cur.fetchall():
