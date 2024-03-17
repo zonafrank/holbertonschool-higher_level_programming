@@ -22,7 +22,8 @@ if __name__ == "__main__":
                          host=host, port=port, database=db_name)
     cur = db.cursor()
     cur.execute(
-        "SELECT * FROM states WHERE name = '{}' ORDER BY id".format(state_name)
+        "SELECT * FROM states WHERE BINARY name = '{}' ORDER BY id".format(
+            state_name)
     )
 
     for row in cur.fetchall():
