@@ -22,7 +22,7 @@ if __name__ == "__main__":
                          host=host, port=port, database=db_name)
     cur = db.cursor()
     cur.execute(
-        "SELECT * FROM states WHERE BINARY name = '%s' ORDER BY id",
+        "SELECT * FROM states WHERE BINARY name = %s ORDER BY id",
         (state_name,)
     )
 
