@@ -22,7 +22,7 @@ if __name__ == "__main__":
                          host=host, port=port, database=db_name)
     with db.cursor() as cur:
         cur.execute(
-            """SELECT A.id, A.name AS city, B.name AS state
+            """SELECT A.name
             FROM cities AS A
             JOIN states AS B ON A.state_id = B.id
             WHERE BINARY B.name = %s
