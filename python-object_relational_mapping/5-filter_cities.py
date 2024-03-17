@@ -30,7 +30,6 @@ if __name__ == "__main__":
             (state_name, )
         )
 
-        for row in cur.fetchall():
-            print(row)
+        print(* [name[0] for name in cur.fetchall()], sep=", ")
 
     db.close()
