@@ -23,9 +23,9 @@ if __name__ == "__main__":
     result = session.query(State).filter(
         State.name == "%s" % (state_name, )).first()
 
-    if result:
-        print("{}: {}".format(result.id, result.name))
-    else:
+    if result is None:
         print("Not found")
+    else:
+        print("{}".format(result.id))
 
     session.close()
