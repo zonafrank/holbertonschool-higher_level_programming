@@ -21,7 +21,7 @@ if __name__ == "__main__":
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
     result = session.query(State).filter(
-        State.name == state_name).first()
+        State.name == "%s" % (state_name)).first()
 
     if result:
         print("{}: {}".format(result.id, result.name))
