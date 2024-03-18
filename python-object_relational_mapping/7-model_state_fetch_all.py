@@ -1,5 +1,10 @@
 #!/usr/bin/python3
-"""Links State class to table in database"""
+"""
+Script that lists all State objects from the database
+
+Take 3 arguments: mysql username, mysql password and database name
+Results are sorted in ascending order by states.id
+"""
 
 import sys
 from model_state import Base, State
