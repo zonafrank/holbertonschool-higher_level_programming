@@ -1,8 +1,8 @@
-let addItem = document.querySelector("#add_item");
-let list = document.querySelector(".my_list");
+const addItem = document.querySelector('#add_item');
+const list = document.querySelector('.my_list');
 
-addItem.addEventListener("click", () => {
-  let listItem = document.createElement("li");
-  listItem.textContent = "Item";
+addItem.addEventListener('click', () => {
+  const listItem = document.createElement('li');
+  listItem.textContent = 'Item';
   list.appendChild(listItem);
 });

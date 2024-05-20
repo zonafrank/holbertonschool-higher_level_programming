@@ -1,7 +1,7 @@
-const url = "https://hellosalut.stefanbohacek.dev/?lang=fr";
+const url = 'https://hellosalut.stefanbohacek.dev/?lang=fr';
 
-function handleData(data) {
-  const helloId = document.querySelector("#hello");
+function handleData (data) {
+  const helloId = document.querySelector('#hello');
   helloId.textContent = data.hello;
 }
 
